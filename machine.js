@@ -35,6 +35,14 @@ function tableCreate(row, col) {
     }
 }
 
+// Preencher a Tabela criada com o exercicio pradrão do quadro
+Exemplo = ['0,1','0,4','0,5','1,2','1,3','1,4','2,1','2,5','3,1','3,5','4,2','5,2','5,3','6,2','6,4']
+function preencherDefault(){
+    for(let e = 0; e < Exemplo.length; e++){
+        document.getElementById(Exemplo[e]).checked = true;
+    }    
+}
+
 GenerateProgramArray = [];
 TextLine = []
 function generateMachine() {
@@ -49,7 +57,6 @@ function generateMachine() {
     }
     CreateTextLine();
 }
-
 
 Armazenar = []
 Retornar = []
