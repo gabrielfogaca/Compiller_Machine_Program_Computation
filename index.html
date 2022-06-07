@@ -17,6 +17,7 @@
         <h1>Machine</h1>
         <label for="number-regs">Select the number of registers</label>
         <button onclick="tableCreate()">Generate table</button>
+        <button onclick="preencherDefault()">Default</button>
         <select id="numbers-regs" name="numbers-regs" >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -35,6 +36,7 @@
             <option value="15">15</option>
             <option value="16">16</option>
         </select>
+        <br><br>
         <table id="machine-table">
             <tr>
                 <th>&nbsp;</th>
@@ -45,8 +47,12 @@
                 <th>=Zero</th>
             </tr>
         </table>
-
+        <br>
         <button onClick="generateMachine()">Generate</button>
+        <br><br>
+        <div class="generateText">
+            
+        </div>
     </div>
 </body>
 <script src="machine.js"></script>
