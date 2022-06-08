@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./program.css">
     <title>Program</title>
 </head>
 <body>
     <h1>Define your program</h1>
+    <form>
     <div id="input-form" class="input-program">
         <!-- <label for="line,1">1</label>:
         <select type="text" id="1" onChange="buildInput(this)">
@@ -16,7 +19,10 @@
         </select> -->
 
     </div>
+    <button type="submit">gerar o trco</button>
+    </form>
     <button onClick="createLine()">+</button>
+    <button onClick="deleteLine()">-</button>
 </body>
 <script src="program.js"></script>
 </html>
