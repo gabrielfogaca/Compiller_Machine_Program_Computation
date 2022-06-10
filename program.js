@@ -206,7 +206,50 @@ function generateProgram(event) {
         }
     }
     //value.topics1 = data.getAll("topics1");
-    console.log({ value });
+    console.log( value );
+    console.log( currentLine );
+    let builtedProgram = buildProgramJSON(value)
+    displayProgramScreen(builtedProgram)
+}
+
+function buildProgramJSON (data) {
+    // for(index = 0; index < currentLine - 1; index++) {
+    //     console.log(data.eval("script" + index.toString()))
+    // }
+    let programFormated = {
+        "program": []
+    }
+
+    for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+            dataLine = data[key]
+            if (dataLine[0] === "faca"){
+               const formatedLine = "faca " + dataLine[1] + " vá_para " + dataLine[2]
+               programFormated.program.push(formatedLine)
+            } else if (dataLine[0] === "se") {
+                const formatedLine = "se " + dataLine[1] + " vá_para " + dataLine[2] + " senão vá_para " + dataLine[3]
+                programFormated.program.push(formatedLine)
+            }
+        }
+    }
+    return programFormated
+}
+
+function displayProgramScreen (data) {
+    let title = document.getElementById("generated-title")
+    let programContent = document.getElementById("program-content")
+    console.log(programContent)
+    title.textContent = "Programa gerado"
+    let index = 1
+    data.program.forEach(ele => {
+        console.log(ele)
+        let span = document.createElement("span").textContent = (index + ": " + ele)
+        let lineBreak = document.createElement("br")
+        programContent.append(span)
+        programContent.append(lineBreak)
+        index++
+    });
+
 }
 const form = document.querySelector('form');
 form.addEventListener('submit', generateProgram);
