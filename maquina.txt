@@ -23,3 +23,25 @@ TODO:PERGUNTAR PRO CAVALHEIRO O QUE FAZER NO IFE
 a_zero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, a_zero(m,n,o,p,q,r,s) = verdadeiro, se n = 0; a_zero(m,n,o,p,q,r,s) = falso, se n ≠ 0
 c_zero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, c_zero(m,n,o,p,q,r,s) = verdadeiro, se n = 0; c_zero(m,n,o,p,q,r,s) = falso, se n ≠ 0
 d_zero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, d_zero(m,n,o,p,q,r,s) = verdadeiro, se n = 0; d_zero(m,n,o,p,q,r,s) = falso, se n ≠ 0
+
+DIVIDIR - EX
+
+dividir_a: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, divide_a(m,n,o,p,q,r,s) = (a/'value',n,o,p,q,r,s);
+
+MULTIPLICAR - EX
+
+multiplica_b: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, multiplica_b(m,n,o,p,q,r,s) = (m,b*'value',o,p,q,r,s);
+
+MAIOR QUE ZERO  - EX
+
+a_greaterThanZero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7,
+ a_greaterThanZero(m,n,o,p,q,r,s) = verdadeiro, se n = 0;
+ a_greaterThanZero(m,n,o,p,q,r,s) = falso, se n ≠ 0
+
+
+MENOR IGUAL A ZERO  - EX
+
+a_lessAndEqualToZero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7,
+ a_lessAndEqualToZero(m,n,o,p,q,r,s) = verdadeiro, se n = 0;
+ a_lessAndEqualToZero(m,n,o,p,q,r,s) = falso, se n ≠ 0
+

@@ -4,7 +4,7 @@ var Registers = 0;
 
 function tableCreate(row, col) {
 	var regInput = document.getElementById("numbers-regs")
-	col = 6
+	col = 10
 	regInput = regInput.options[regInput.selectedIndex].value
 	Registers = regInput;
 	row = regInput
@@ -36,7 +36,7 @@ function tableCreate(row, col) {
 }
 
 // Preencher a Tabela criada com o exercicio pradrão do quadro
-Exemplo = ['0,1', '0,4', '0,5', '1,2', '1,3', '1,4', '2,1', '2,5', '3,1', '3,5', '4,2', '5,2', '5,3', '6,2', '6,4']
+Exemplo = ['0,1', '0,4', '0,5', '1,2', '1,3', '1,4', '2,1', '2,5', '3,1', '3,5', '4,2', '5,2', '5,3', '6,2', '6,4', '0,6', '1,6', '0,7', '1,7', '0,8', '2,8', '1,9', '4,9']
 function preencherDefault() {
 	for (let e = 0; e < Exemplo.length; e++) {
 		document.getElementById(Exemplo[e]).checked = true;
@@ -48,7 +48,7 @@ TextLine = []
 var machineName
 function generateMachine() {
 	machineName = document.getElementById('machine_name').value
-	for (let col = 1; col < 6; col++) {
+	for (let col = 1; col < 10; col++) {
 		for (let row = 0; row < regNumber; row++) {
 			cell = row + ',' + col
 			let isChecked = document.getElementById(cell)
@@ -64,7 +64,11 @@ Armazenar = [];
 Retornar = [];
 Somar = [];
 Subtrair = [];
+Dividir = [];
+multiplicar = [];
 toZero = [];
+greaterThenZero = [];
+lessAndEqualToZero = [];
 
 function CreateTextLine() {
 	for (let i = 0; i < GenerateProgramArray.length; i++) {
@@ -108,13 +112,49 @@ function CreateTextLine() {
 						Subtrair.push(Indexcompare);
 				}
 			}
-			// =zero = 5
+			// dividir = 5
 			else if (TextLine[z][1] == 5) {
 				Indexcompare = [];
 				for (let l = 0; l < letterArr.length; l++) {
 					Indexcompare = letterArr[l];
 					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
+						Dividir.push(Indexcompare);
+				}
+			}
+			// multiplicar = 6
+			else if (TextLine[z][1] == 6) {
+				Indexcompare = [];
+				for (let l = 0; l < letterArr.length; l++) {
+					Indexcompare = letterArr[l];
+					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
+						multiplicar.push(Indexcompare);
+				}
+			}
+			// =zero = 7
+			else if (TextLine[z][1] == 7) {
+				Indexcompare = [];
+				for (let l = 0; l < letterArr.length; l++) {
+					Indexcompare = letterArr[l];
+					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
 						toZero.push(Indexcompare);
+				}
+			}
+			// Maior que Zero = 8
+			else if (TextLine[z][1] == 8) {
+				Indexcompare = [];
+				for (let l = 0; l < letterArr.length; l++) {
+					Indexcompare = letterArr[l];
+					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
+						greaterThenZero.push(Indexcompare);
+				}
+			}
+			// Menor igual a Zero = 9
+			else if (TextLine[z][1] == 9) {
+				Indexcompare = [];
+				for (let l = 0; l < letterArr.length; l++) {
+					Indexcompare = letterArr[l];
+					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
+						lessAndEqualToZero.push(Indexcompare);
 				}
 			}
 		}
@@ -124,7 +164,11 @@ function CreateTextLine() {
 	limparArray2 = Retornar.filter((este, i) => Retornar.indexOf(este) === i);
 	limparArray3 = Somar.filter((este, i) => Somar.indexOf(este) === i);
 	limparArray4 = Subtrair.filter((este, i) => Subtrair.indexOf(este) === i);
-	limparArray5 = toZero.filter((este, i) => toZero.indexOf(este) === i);
+	limparArray5 = Dividir.filter((este, i) => Dividir.indexOf(este) === i);
+	limparArray6 = multiplicar.filter((este, i) => multiplicar.indexOf(este) === i);
+	limparArray7 = toZero.filter((este, i) => toZero.indexOf(este) === i);
+	limparArray8 = greaterThenZero.filter((este, i) => greaterThenZero.indexOf(este) === i);
+	limparArray9 = lessAndEqualToZero.filter((este, i) => lessAndEqualToZero.indexOf(este) === i);
 
 	var obj = new Object();
 	obj.Name = machineName;
@@ -133,13 +177,17 @@ function CreateTextLine() {
 	obj.Retornar = limparArray2
 	obj.Somar = limparArray3
 	obj.Subtrair = limparArray4
-	obj.toZero = limparArray5
+	obj.Dividir = limparArray5
+	obj.multiplicar = limparArray6
+	obj.toZero = limparArray7
+	obj.greaterThenZero = limparArray8
+	obj.lessAndEqualToZero = limparArray9
 
 	var myJsonString = JSON.stringify(obj);
 	const Maquina = JSON.parse(myJsonString)
 
 
-	// console.log(Maquina);
+	console.log(Maquina);
 	gerarTexto(Maquina);
 }
 
@@ -179,7 +227,7 @@ function gerarTexto(Maquina) {
 			// Subtrair
 			case "Subtrair":
 				for (let sub = 0; sub < Maquina.Subtrair.length; sub++) {
-					linhas.push(`subtrai_${Maquina.Subtrair[sub]}: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, subtrai_${Maquina.Subtrair[sub]}(${machineEntryList}) = (${padSubtoZero(Maquina.Subtrair[sub], Maquina.length)}), se n>=0; subtrai_${Maquina.Subtrair[sub]}(${machineEntryList}) = (${padSubEqualZero(Maquina.Subtrair[sub], Maquina.length)}), se n = 0`)
+					linhas.push(`subtrai_${Maquina.Subtrair[sub]}: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, subtrai_${Maquina.Subtrair[sub]}(${machineEntryList}) = (${padSubtoZero(Maquina.Subtrair[sub], Maquina.length)}), se n≥0; subtrai_${Maquina.Subtrair[sub]}(${machineEntryList}) = (${padSubEqualZero(Maquina.Subtrair[sub], Maquina.length)}), se n = 0`)
 				}
 				break;
 			// Somar
@@ -194,18 +242,40 @@ function gerarTexto(Maquina) {
 					linhas.push(`${Maquina.toZero[zer]}_zero -> {verdadeiro, falso} tal que, ∀(${machineEntryList}),∈N^${Maquina.Registers}, ${Maquina.toZero[zer]}_zero(${machineEntryList}) = verdadeiro, se n = 0; ${Maquina.toZero[zer]}_zero(${machineEntryList}) = falso, se n ≠ 0`)
 				}
 				break;
+			// dividir
+			case "Dividir":
+				for (let d = 0; d < Maquina.toZero.length; d++) {
+					linhas.push(`dividir_${Maquina.Dividir[d]}: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, dividir_${Maquina.Dividir[d]}(${machineEntryList}) = (${padDividir(Maquina.Dividir[d], Maquina.length)});`)
+				}
+				break;
+			// multiplicar
+			case "multiplicar":
+				for (let d = 0; d < Maquina.toZero.length; d++) {
+					linhas.push(`multiplicar_${Maquina.multiplicar[d]}: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, multiplicar_${Maquina.multiplicar[d]}(${machineEntryList}) = (${padMultiplicar(Maquina.multiplicar[d], Maquina.length)});`)
+				}
+				break;
+			// maior que zero
+			case "greaterThenZero":
+				for (let d = 0; d < Maquina.toZero.length; d++) {
+					// 
+				}
+				break;
+			// menor igual a zero	
+			case "lessAndEqualToZero":
+				for (let d = 0; d < Maquina.toZero.length; d++) {
+					// 
+				}
+				break;
 			default:
 				break;
 		}
 	};
-	// console.log(linhas)
 	console.log(linhas.reduce((a, b) => {
 		a += b;
 		a += '\n';
 		return a;
 	}, ''))
-	// console.log(Maquina)
-	// console.log(machineStorage)
+	document.getElementById("textogerado").innerHTML = 'textGerado';
 };
 
 /**
@@ -252,6 +322,36 @@ function padSum(sum, length) {
 	let asciiDistanceToA = sum.charCodeAt(0) - 97
 	const output = templateListString.substring(0, asciiDistanceToA * 2) +
 		sum + '+1' +
+		templateListString.substring(asciiDistanceToA * 2 + 1)
+	return output
+}
+
+/**
+ * Dividir
+ * @param {string} d
+ * @param {number} length
+ * @returns
+ */
+function padDividir(d, length) {
+	let templateListString = machineEntryList.toString();
+	let asciiDistanceToA = d.charCodeAt(0) - 97
+	const output = templateListString.substring(0, asciiDistanceToA * 2) +
+		d + '/value' +
+		templateListString.substring(asciiDistanceToA * 2 + 1)
+	return output
+}
+
+/**
+ * Dividir
+ * @param {string} d
+ * @param {number} length
+ * @returns
+ */
+function padMultiplicar(d, length) {
+	let templateListString = machineEntryList.toString();
+	let asciiDistanceToA = d.charCodeAt(0) - 97
+	const output = templateListString.substring(0, asciiDistanceToA * 2) +
+		d + '*value' +
 		templateListString.substring(asciiDistanceToA * 2 + 1)
 	return output
 }
