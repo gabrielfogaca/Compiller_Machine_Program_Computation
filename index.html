@@ -40,18 +40,25 @@
         <table id="machine-table">
             <tr>
                 <th>&nbsp;</th>
-                <th>Armaz</th>
-                <th>Retor</th>
-                <th>Soma</th>
-                <th>Sub</th>
+                <th>Armazenar</th>
+                <th>Retornar</th>
+                <th>Somar</th>
+                <th>Subtrair</th>
+                <th>dividir</th>
+                <th>multiplicar</th>
                 <th>=Zero</th>
+                <th>>Zero</th>
+                <th>≤Zero</th>
             </tr>
         </table>
         <br>
+        <label for="NomedaMaquina">Nome da Maquina:</label>
+        <input type="text" id="machine_name" placeholder="Nome da Maquina" required>
+        <br>
+        <br>
         <button onClick="generateMachine()">Generate</button>
         <br><br>
-        <div class="generateText">
-            
+        <div id="textogerado" class="generateText">
         </div>
     </div>
 </body>

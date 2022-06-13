@@ -19,3 +19,7 @@
     border: 1px solid black !important;
     padding: 5px !important;
   }
+
+  .generateText{
+    border: 1px solid;
+  }
