@@ -1,35 +1,67 @@
-var mocadoProg = {
-	"program": [
-		"se zero==c vá_para 0 senão vá_para 2",
-		"faca sumsb vá_para 3",
-		"faca sumsb vá_para 4",
-		"faca subsc vá_para 5",
-		"faca sumsb vá_para 1"
-	]
-}
+// var programCode = {
+// 	"program": [
+// 		"se zero==c vá_para 0 senão vá_para 2",
+// 		"faca sumsb vá_para 3",
+// 		"faca sumsb vá_para 4",
+// 		"faca subsc vá_para 5",
+// 		"faca sumsb vá_para 1"
+// 	]
+// }
 
 var mocadoReg = {
-	"regs": 4,
-	"stores": [
-		"a", "b","c"
-	],
-	"returns": [
-		"d"
-	],
-	"ifZero": [
-		"a", "b", "c"
-	],
-	"sums": [
-		"b", "c", "d"
-	],
-	"subs": [
-		"a", "b", "c"
-	]
+    "Name": "asd",
+    "Registers": "7",
+    "Armazenar": [
+        "a",
+        "c",
+        "d"
+    ],
+    "Retornar": [
+        "b",
+        "e",
+        "f",
+        "g"
+    ],
+    "Somar": [
+        "b",
+        "f"
+    ],
+    "Subtrair": [
+        "a",
+        "b",
+        "g"
+    ],
+    "Dividir": [
+        "a",
+        "c",
+        "d"
+    ],
+    "multiplicar": [
+        "a",
+        "b"
+    ],
+    "toZero": [
+        "a",
+        "b"
+    ],
+    "greaterThenZero": [
+        "a",
+        "c"
+    ],
+    "lessThenZero": [
+        "b",
+        "e"
+    ]
 }
 
 var inputValues = {}
 
 var iters
+
+let currentLine = 0
+let isntHalted = true
+
+let plzStop = 0
 
 var log = document.getElementById("comp-log")
 var lb = document.createElement("br")
@@ -37,11 +69,17 @@ var lb = document.createElement("br")
 const form = document.querySelector('form');
 form.addEventListener('submit', handleInputs);
 
-if (mocadoReg.length !== 0 ) {
-	let varsDiv = document.getElementById("vars").firstElementChild.firstElementChild
-	
+// code and machine built in previes pages
+let programCode = {}
+let registerInfo = {}
 
-	mocadoReg.stores.forEach(regs => {
+// getting JSON values and parsing it, also populating input reg fields
+if (sessionStorage.getItem('program').length !== 0 ) {
+	let varsDiv = document.getElementById("vars").firstElementChild.firstElementChild
+	programCode = JSON.parse(sessionStorage.getItem('program'))
+	console.log(programCode)
+
+	mocadoReg.Armazenar.forEach(regs => {
 
 		let regInput = document.createElement("input")
 			regInput.name = regs
@@ -67,19 +105,15 @@ function handleInputs(event) {
 	compute()
 }
 
-let currentLine = 0
-let isntHalted = true
-
-let plzStop = 0
 
 function compute () {
-	// currentLine !== 0 && currentLine !== mocadoProg.program.length
+	// currentLine !== 0 && currentLine !== programCode.program.length
 	while (isntHalted && plzStop < 400) {
 		readLine(currentLine)
 		plzStop++
 	}
 	
-	// let firstLine = mocadoProg.program[0]
+	// let firstLine = programCode.program[0]
 
 	// if (firstLine.includes("se")) {
 	//     checkSe(firstLine)
@@ -87,7 +121,7 @@ function compute () {
 }
 
 function readLine (line) {
-	let lineString = mocadoProg.program[line]
+	let lineString = programCode.program[line]
 	
 	// check if line is faca or se
 	if(lineString.includes("se")){
@@ -98,13 +132,20 @@ function readLine (line) {
 			if (isntHalted) {
 				vaPara(lineString)
 			}
+		} else if (lineString.includes("<")) {
+			isntHalted = lessThenZeroComparisson(lineString, line)
+			// if it hasnt halted yet, continues to read the string
+			if (isntHalted) {
+				vaPara(lineString)
+			}
 		}
 	} else if(lineString.includes("faca")) {
 		if (lineString.includes("sums")){
 			currentLine = summation(lineString, line);
-		}
-		if (lineString.includes("subs")){
+		} else if (lineString.includes("subs")){
 			currentLine = subtraction(lineString, line);
+		} else if (lineString.includes) {
+
 		}
 	}
 
@@ -113,9 +154,8 @@ function readLine (line) {
 function zeroComparisson (lineString, line) {
     let register = lineString.charAt(9)
 	let splitLine = lineString.split("vá_para ")
-	console.log(splitLine)
 
-    if(parseInt(inputValues["c"]) === 0) {
+    if(parseInt(inputValues[register]) === 0) {
 		let wentTo = splitLine[1].charAt(0)
 		line++
         let logging = document.createElement("span")
@@ -129,6 +169,30 @@ function zeroComparisson (lineString, line) {
 		line++
         let logging = document.createElement("span")
 			logging.innerText = "em " + line.toString() + ", como " + register + "!=0, desviou para " + wentTo
+		log.appendChild(logging)
+		log.appendChild(lb)
+        return true
+    }  
+}
+
+function lessThenZeroComparisson (lineString, line) {
+	let register = lineString.charAt(3)
+	let splitLine = lineString.split("vá_para ")
+
+	if(parseInt(inputValues[register]) < 0) {
+		let wentTo = splitLine[1].charAt(0)
+		line++
+        let logging = document.createElement("span")
+			logging.innerText = "em " + line.toString() + ", como " + register + "< 0, desviou para " + wentTo
+		log.appendChild(logging)
+		log.appendChild(lb)
+		
+		return false
+    } else {
+		let wentTo = splitLine[2]
+		line++
+        let logging = document.createElement("span")
+			logging.innerText = "em " + line.toString() + ", como " + register + "> 0, desviou para " + wentTo
 		log.appendChild(logging)
 		log.appendChild(lb)
         return true
