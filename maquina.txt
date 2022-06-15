@@ -1,43 +1,86 @@
-asd = N^7, N^3, N^4
+asd = N^7, N^3, N^4 (✓)
 
-armazena_a: N^7 tal que, ∀neN, armazena_a(n) = (a,0,0,0,0,0,0); !ok
-armazena_c: N^7 tal que, ∀neN, armazena_c(n) = (0,0,c,0,0,0,0); !ok
-armazena_d: N^7 tal que, ∀neN, armazena_d(n) = (0,0,0,d,0,0,0); !ok
+armazena_a: N^7 tal que, ∀neN, armazena_a(n) = (a,0,0,0,0,0,0); !ok (✓)
+armazena_c: N^7 tal que, ∀neN, armazena_c(n) = (0,0,c,0,0,0,0); !ok (✓)
+armazena_d: N^7 tal que, ∀neN, armazena_d(n) = (0,0,0,d,0,0,0); !ok (✓)
 
-retorna_b: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, retorna_b(m,b,o,p,q,r,s) = b; !ok
-retorna_e: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, retorna_e(m,n,o,p,e,r,s) = e; !ok
-retorna_f: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, retorna_f(m,n,o,p,q,f,s) = f; !ok
-retorna_g: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, retorna_g(m,n,o,p,q,r,g) = g; !ok
+retorna_b: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, retorna_b(m,n,o,p,q,r,s) = n; !ok sendo n(memória) = b (✓)
+retorna_e: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, retorna_e(m,n,o,p,q,r,s) = q; !ok sendo q(memória) = e (✓)
+retorna_f: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, retorna_f(m,n,o,p,q,r,s) = r; !ok sendo r(memória) = f (✓)
+retorna_g: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, retorna_g(m,n,o,p,q,r,s) = s; !ok sendo s(memória) = g (✓)
 
-Adiciona_b: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, Adiciona_b(m,n,o,p,q,r,s) = (m,n+1,o,p,q,r,s); !ok manter memória + 1
-Adiciona_f: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, Adiciona_f(m,n,o,p,q,r,s) = (m,n,o,p,q,r+1,s); !ok "manter memória"+1
+Adiciona_b: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, Adiciona_b(m,n,o,p,q,r,s) = (m,n+1,o,p,q,r,s); !ok "manter memória" + 1 ,ou seja, b(2) = n(2) => b+1 = n+1 (✓)
+Adiciona_f: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, Adiciona_f(m,n,o,p,q,r,s) = (m,n,o,p,q,r+1,s); !ok "manter memória" + 1 ,ou seja, f(2) = r(2) => f+1 = r+1 (✓)
 
-Subtrai_a: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, Subtrai_a(m,n,o,p,q,r,s) = (m-1,n,o,p,q,r,s), se a>=0; Subtrai_a(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s), se a = 0
-Subtrai_b: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, Subtrai_b(m,n,o,p,q,r,s) = (m,n-1,o,p,q,r,s), se b>=0; Subtrai_b(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s), se b = 0
-Subtrai_g: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, Subtrai_g(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s-1), se g>=0; Subtrai_g(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s), se g = 0
+Subtrai_a: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, Subtrai_a(m,n,o,p,q,r,s) = (m-1,n,o,p,q,r,s), se m>=0; Subtrai_a(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s), se m = 0 (✓)
+Subtrai_b: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, Subtrai_b(m,n,o,p,q,r,s) = (m,n-1,o,p,q,r,s), se n>=0; Subtrai_b(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s), se n = 0 (✓)
+Subtrai_g: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, Subtrai_g(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s-1), se s>=0; Subtrai_g(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s), se s = 0 (✓)
+
+subtrai_a: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, subtrai_a(m,n,o,p,q,r,s) = (m-1,n,o,p,q,r,s), se m≥0; subtrai_a(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s), se m = 0 (✓)
+subtrai_b: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, subtrai_b(m,n,o,p,q,r,s) = (m,n-1,o,p,q,r,s), se n≥0; subtrai_b(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s), se n = 0 (✓)
+subtrai_g: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, subtrai_g(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s-1), se s≥0; subtrai_g(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s), se s = 0 (✓)
 
 a_zero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, a_zero(m,n,o,p,q,r,s) = verdadeiro, se m = 0; a_zero(m,n,o,p,q,r,s) = falso, se m ≠ 0
-c_zero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, c_zero(m,n,o,p,q,r,s) = verdadeiro, se o = 0; c_zero(m,n,o,p,q,r,s) = falso, se o ≠ 0
-d_zero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, d_zero(m,n,o,p,q,r,s) = verdadeiro, se p = 0; d_zero(m,n,o,p,q,r,s) = falso, se p ≠ 0
+b_zero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, c_zero(m,n,o,p,q,r,s) = verdadeiro, se n = 0; c_zero(m,n,o,p,q,r,s) = falso, se n ≠ 0
+
 
 DIVIDIR - EX
 
-dividir_a/2: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, divide_a(m,n,o,p,q,r,s) = (m/2,n,o,p,q,r,s); pode colocar constante
+dividir_a/2: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, divide_a(m,n,o,p,q,r,s) = (m/2,n,o,p,q,r,s); pode colocar constante (✓)
+
+dividir_a/2: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, dividir_a(m,n,o,p,q,r,s) = (m/2,n,o,p,q,r,s);
 
 MULTIPLICAR - EX
 
-multiplica_b*2: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, multiplica_b(m,n,o,p,q,r,s) = (m,n*2,o,p,q,r,s);
+multiplica_b*2: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, multiplica_b(m,n,o,p,q,r,s) = (m,n*2,o,p,q,r,s); pode colocar constante (✓)
+
+multiplicar_a*2: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, multiplicar_a(m,n,o,p,q,r,s) = (m*2,n,o,p,q,r,s); (✓)
 
 MAIOR QUE ZERO  - EX
 
-a_greaterThanZero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7,
- a_greaterThanZero(m,n,o,p,q,r,s) = verdadeiro, se n > 0;
- a_greaterThanZero(m,n,o,p,q,r,s) = falso, se n <= 0
+a_greaterThanZero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, a_greaterThanZero(m,n,o,p,q,r,s) = verdadeiro, se m > 0; a_greaterThanZero(m,n,o,p,q,r,s) = falso, se m <= 0 (✓)
 
+a_greaterThanZero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, a_greaterThanZero(m,n,o,p,q,r,s) = verdadeiro, se m > 0; a_greaterThanZero(m,n,o,p,q,r,s) = falso, se m ≤ 0 (✓)
+
+a_greaterThanZero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, a_greaterThanZero(m,n,o,p,q,r,s) = verdadeiro, se m > 0; a_greaterThanZero(m,n,o,p,q,r,s) = falso, se m ≤ 0 (✓)
 
 MENOR QUE ZERO  - EX
 
-a_lessAndEqualToZero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7,
- a_lessAndEqualToZero(m,n,o,p,q,r,s) = verdadeiro, se n < 0;
- a_lessAndEqualToZero(m,n,o,p,q,r,s) = falso, se n >= 0
+a_lessThanZero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, a_lessThanZero(m,n,o,p,q,r,s) = verdadeiro, se m < 0; a_lessThanZero(m,n,o,p,q,r,s) = falso, se m >= 0 (✓)
 
+b_lessThanZero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, b_lessThanZero(m,n,o,p,q,r,s) = verdadeiro, se n < 0; b_lessThanZero(m,n,o,p,q,r,s) = falso, se n ≥ 0 (✓)
+
+conferindo...
+
+ads = N^7, N^3, N^4
+
+armazena_a: N^7 tal que, ∀neN, armazena_a(n) = (a,0,0,0,0,0,0);
+armazena_c: N^7 tal que, ∀neN, armazena_c(n) = (0,0,c,0,0,0,0);
+armazena_d: N^7 tal que, ∀neN, armazena_d(n) = (0,0,0,d,0,0,0);
+
+retorna_b: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, retorna_b(m,n,o,p,q,r,s) = n;
+retorna_e: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, retorna_e(m,n,o,p,q,r,s) = q;
+retorna_f: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, retorna_f(m,n,o,p,q,r,s) = r;
+retorna_g: N^7 -> N tal que, ∀(m,n,o,p,q,r,s)∈N^7, retorna_g(m,n,o,p,q,r,s) = s;
+
+adiciona_b: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, adiciona_b(m,n,o,p,q,r,s) = (m,n+1,o,p,q,r,s);
+adiciona_f: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, adiciona_f(m,n,o,p,q,r,s) = (m,n,o,p,q,r+1,s);
+
+subtrai_a: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, subtrai_a(m,n,o,p,q,r,s) = (m-1,n,o,p,q,r,s), se m≥0; subtrai_a(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s), se m = 0
+subtrai_b: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, subtrai_b(m,n,o,p,q,r,s) = (m,n-1,o,p,q,r,s), se n≥0; subtrai_b(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s), se n = 0
+subtrai_g: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, subtrai_g(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s-1), se s≥0; subtrai_g(m,n,o,p,q,r,s) = (m,n,o,p,q,r,s), se s = 0
+
+dividir_a/2: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, dividir_a(m,n,o,p,q,r,s) = (m/2,n,o,p,q,r,s);
+dividir_c/2: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, dividir_c(m,n,o,p,q,r,s) = (m,n,o/2,p,q,r,s);
+
+multiplicar_a*2: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, multiplicar_a(m,n,o,p,q,r,s) = (m*2,n,o,p,q,r,s);
+multiplicar_b*2: N^7 -> N^7 tal que, ∀(m,n,o,p,q,r,s)∈N^7, multiplicar_b(m,n,o,p,q,r,s) = (m,n*2,o,p,q,r,s);
+
+a_zero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, a_zero(m,n,o,p,q,r,s) = verdadeiro, se m = 0; a_zero(m,n,o,p,q,r,s) = falso, se m ≠ 0
+b_zero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, b_zero(m,n,o,p,q,r,s) = verdadeiro, se n = 0; b_zero(m,n,o,p,q,r,s) = falso, se n ≠ 0
+
+a_greaterThanZero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, a_greaterThanZero(m,n,o,p,q,r,s) = verdadeiro, se m > 0; a_greaterThanZero(m,n,o,p,q,r,s) = falso, se m ≤ 0
+c_greaterThanZero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, c_greaterThanZero(m,n,o,p,q,r,s) = verdadeiro, se o > 0; c_greaterThanZero(m,n,o,p,q,r,s) = falso, se o ≤ 0
+
+b_lessThanZero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, b_lessThanZero(m,n,o,p,q,r,s) = verdadeiro, se n < 0; b_lessThanZero(m,n,o,p,q,r,s) = falso, se n ≥ 0
+e_lessThanZero -> {verdadeiro, falso} tal que, ∀(m,n,o,p,q,r,s),∈N^7, e_lessThanZero(m,n,o,p,q,r,s) = verdadeiro, se q < 0; e_lessThanZero(m,n,o,p,q,r,s) = falso, se q ≥ 0
