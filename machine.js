@@ -68,7 +68,7 @@ Dividir = [];
 multiplicar = [];
 toZero = [];
 greaterThenZero = [];
-lessAndEqualToZero = [];
+lessThenZero = [];
 
 function CreateTextLine() {
 	for (let i = 0; i < GenerateProgramArray.length; i++) {
@@ -154,7 +154,7 @@ function CreateTextLine() {
 				for (let l = 0; l < letterArr.length; l++) {
 					Indexcompare = letterArr[l];
 					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
-						lessAndEqualToZero.push(Indexcompare);
+					lessThenZero.push(Indexcompare);
 				}
 			}
 		}
@@ -168,7 +168,7 @@ function CreateTextLine() {
 	limparArray6 = multiplicar.filter((este, i) => multiplicar.indexOf(este) === i);
 	limparArray7 = toZero.filter((este, i) => toZero.indexOf(este) === i);
 	limparArray8 = greaterThenZero.filter((este, i) => greaterThenZero.indexOf(este) === i);
-	limparArray9 = lessAndEqualToZero.filter((este, i) => lessAndEqualToZero.indexOf(este) === i);
+	limparArray9 = lessThenZero.filter((este, i) => lessThenZero.indexOf(este) === i);
 
 	var obj = new Object();
 	obj.Name = machineName;
@@ -181,7 +181,7 @@ function CreateTextLine() {
 	obj.multiplicar = limparArray6
 	obj.toZero = limparArray7
 	obj.greaterThenZero = limparArray8
-	obj.lessAndEqualToZero = limparArray9
+	obj.lessThenZero = limparArray9
 
 	var myJsonString = JSON.stringify(obj);
 	const Maquina = JSON.parse(myJsonString)
@@ -189,11 +189,14 @@ function CreateTextLine() {
 
 	console.log(Maquina);
 	gerarTexto(Maquina);
+	// mandar para a 3ª parte
+	sessionStorage.setItem('Machine', "")
+	sessionStorage.setItem('Machine', JSON.stringify(Maquina))
 }
 
 
 // gerar texto
-// 8 é o numero de opções da maquina(Armazenar, Retornar, Somar, Subtrair, Dividir, Multiplicar e =Zero)
+// 10 é o numero de opções da maquina(Armazenar, Retornar, Somar, Subtrair, Dividir, Multiplicar, =Zero, maior que 0, menor que 0)
 entryMachine = ['m', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'w', 'y', 'z', 'aa', 'ab']
 entraMachineStorage = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
 machineStorage = []
@@ -227,7 +230,7 @@ function gerarTexto(Maquina) {
 			// Subtrair
 			case "Subtrair":
 				for (let sub = 0; sub < Maquina.Subtrair.length; sub++) {
-					linhas.push(`subtrai_${Maquina.Subtrair[sub]}: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, subtrai_${Maquina.Subtrair[sub]}(${machineEntryList}) = (${padSubtoZero(Maquina.Subtrair[sub], Maquina.length)}), se n≥0; subtrai_${Maquina.Subtrair[sub]}(${machineEntryList}) = (${padSubEqualZero(Maquina.Subtrair[sub], Maquina.length)}), se n = 0`)
+					linhas.push(`subtrai_${Maquina.Subtrair[sub]}: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, subtrai_${Maquina.Subtrair[sub]}(${machineEntryList}) = (${padSubtoZero(Maquina.Subtrair[sub], Maquina.length)}), se n≥0; subtrai_${Maquina.Subtrair[sub]}(${machineEntryList}) = (${machineEntryList}), se n = 0`)
 				}
 				break;
 			// Somar
@@ -239,7 +242,7 @@ function gerarTexto(Maquina) {
 			// ifZero
 			case "toZero":
 				for (let zer = 0; zer < Maquina.toZero.length; zer++) {
-					linhas.push(`${Maquina.toZero[zer]}_zero -> {verdadeiro, falso} tal que, ∀(${machineEntryList}),∈N^${Maquina.Registers}, ${Maquina.toZero[zer]}_zero(${machineEntryList}) = verdadeiro, se n = 0; ${Maquina.toZero[zer]}_zero(${machineEntryList}) = falso, se n ≠ 0`)
+					linhas.push(`${Maquina.toZero[zer]}_zero -> {verdadeiro, falso} tal que, ∀(${machineEntryList}),∈N^${Maquina.Registers}, ${Maquina.toZero[zer]}_zero(${machineEntryList}) = verdadeiro, se ${Maquina.toZero[zer]} = 0; ${Maquina.toZero[zer]}_zero(${machineEntryList}) = falso, se ${Maquina.toZero[zer]} ≠ 0`)
 				}
 				break;
 			// dividir
@@ -256,13 +259,13 @@ function gerarTexto(Maquina) {
 				break;
 			// maior que zero
 			case "greaterThenZero":
-				for (let d = 0; d < Maquina.toZero.length; d++) {
+				for (let d = 0; d < Maquina.greaterThenZero.length; d++) {
 					// 
 				}
 				break;
-			// menor igual a zero	
-			case "lessAndEqualToZero":
-				for (let d = 0; d < Maquina.toZero.length; d++) {
+			// menor igual a zero
+			case "lessThenZero":
+				for (let d = 0; d < Maquina.lessThenZero.length; d++) {
 					// 
 				}
 				break;
@@ -321,7 +324,7 @@ function padSum(sum, length) {
 	let templateListString = machineEntryList.toString();
 	let asciiDistanceToA = sum.charCodeAt(0) - 97
 	const output = templateListString.substring(0, asciiDistanceToA * 2) +
-		sum + '+1' +
+	sum +'+1' +
 		templateListString.substring(asciiDistanceToA * 2 + 1)
 	return output
 }
@@ -336,7 +339,7 @@ function padDividir(d, length) {
 	let templateListString = machineEntryList.toString();
 	let asciiDistanceToA = d.charCodeAt(0) - 97
 	const output = templateListString.substring(0, asciiDistanceToA * 2) +
-		d + '/value' +
+		d +'/2' +
 		templateListString.substring(asciiDistanceToA * 2 + 1)
 	return output
 }
@@ -351,7 +354,7 @@ function padMultiplicar(d, length) {
 	let templateListString = machineEntryList.toString();
 	let asciiDistanceToA = d.charCodeAt(0) - 97
 	const output = templateListString.substring(0, asciiDistanceToA * 2) +
-		d + '*value' +
+		d + '*2' +
 		templateListString.substring(asciiDistanceToA * 2 + 1)
 	return output
 }
