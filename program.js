@@ -1,5 +1,5 @@
 let currentLine = 1
-
+console.log(JSON.parse(sessionStorage.getItem('program')))
 let mocadao = {
 	"regs": 4,
 	"stores": [
