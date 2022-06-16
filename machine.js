@@ -59,7 +59,7 @@ function generateMachine() {
 	}
 	CreateTextLine();
 }
-
+// Arrays de armazenamento
 Armazenar = [];
 Retornar = [];
 Somar = [];
@@ -68,7 +68,17 @@ Dividir = [];
 multiplicar = [];
 toZero = [];
 greaterThenZero = [];
-lessAndEqualToZero = [];
+lessThenZero = [];
+// Arrays de texto
+txtArmazenar = [];
+txtRetornar = [];
+txtSomar = [];
+txtSubtrair = [];
+txtDividir = [];
+txtmultiplicar = [];
+txttoZero = [];
+txtgreaterThenZero = [];
+txtlessThenZero = [];
 
 function CreateTextLine() {
 	for (let i = 0; i < GenerateProgramArray.length; i++) {
@@ -81,8 +91,10 @@ function CreateTextLine() {
 				Indexcompare = [];
 				for (let l = 0; l < letterArr.length; l++) {
 					Indexcompare = letterArr[l];
-					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
+					if (TextLine[z][0] == letterArr.indexOf(Indexcompare)) {
 						Armazenar.push(Indexcompare);
+						txtArmazenar.push('Armazena_' + Indexcompare)
+					}
 				}
 			}
 			// retorna = 2
@@ -90,8 +102,10 @@ function CreateTextLine() {
 				Indexcompare = [];
 				for (let l = 0; l < letterArr.length; l++) {
 					Indexcompare = letterArr[l];
-					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
+					if (TextLine[z][0] == letterArr.indexOf(Indexcompare)) {
 						Retornar.push(Indexcompare);
+						txtRetornar.push('Retornar_' + Indexcompare)
+					}
 				}
 			}
 			// soma = 3
@@ -99,8 +113,10 @@ function CreateTextLine() {
 				Indexcompare = [];
 				for (let l = 0; l < letterArr.length; l++) {
 					Indexcompare = letterArr[l];
-					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
+					if (TextLine[z][0] == letterArr.indexOf(Indexcompare)) {
 						Somar.push(Indexcompare);
+						txtSomar.push('Somar_' + Indexcompare)
+					}
 				}
 			}
 			// subtrair = 4
@@ -108,8 +124,10 @@ function CreateTextLine() {
 				Indexcompare = [];
 				for (let l = 0; l < letterArr.length; l++) {
 					Indexcompare = letterArr[l];
-					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
+					if (TextLine[z][0] == letterArr.indexOf(Indexcompare)) {
 						Subtrair.push(Indexcompare);
+						txtSubtrair.push('Subtrair_' + Indexcompare)
+					}
 				}
 			}
 			// dividir = 5
@@ -117,8 +135,10 @@ function CreateTextLine() {
 				Indexcompare = [];
 				for (let l = 0; l < letterArr.length; l++) {
 					Indexcompare = letterArr[l];
-					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
+					if (TextLine[z][0] == letterArr.indexOf(Indexcompare)) {
 						Dividir.push(Indexcompare);
+						txtDividir.push('Dividir_' + Indexcompare)
+					}
 				}
 			}
 			// multiplicar = 6
@@ -126,8 +146,10 @@ function CreateTextLine() {
 				Indexcompare = [];
 				for (let l = 0; l < letterArr.length; l++) {
 					Indexcompare = letterArr[l];
-					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
+					if (TextLine[z][0] == letterArr.indexOf(Indexcompare)) {
 						multiplicar.push(Indexcompare);
+						txtmultiplicar.push('multiplicar_' + Indexcompare)
+					}
 				}
 			}
 			// =zero = 7
@@ -135,8 +157,10 @@ function CreateTextLine() {
 				Indexcompare = [];
 				for (let l = 0; l < letterArr.length; l++) {
 					Indexcompare = letterArr[l];
-					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
+					if (TextLine[z][0] == letterArr.indexOf(Indexcompare)) {
 						toZero.push(Indexcompare);
+						txttoZero.push('toZero_' + Indexcompare)
+					}
 				}
 			}
 			// Maior que Zero = 8
@@ -144,8 +168,10 @@ function CreateTextLine() {
 				Indexcompare = [];
 				for (let l = 0; l < letterArr.length; l++) {
 					Indexcompare = letterArr[l];
-					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
+					if (TextLine[z][0] == letterArr.indexOf(Indexcompare)) {
 						greaterThenZero.push(Indexcompare);
+						txtgreaterThenZero.push('greaterThenZero_' + Indexcompare)
+					}
 				}
 			}
 			// Menor igual a Zero = 9
@@ -153,8 +179,10 @@ function CreateTextLine() {
 				Indexcompare = [];
 				for (let l = 0; l < letterArr.length; l++) {
 					Indexcompare = letterArr[l];
-					if (TextLine[z][0] == letterArr.indexOf(Indexcompare))
-						lessAndEqualToZero.push(Indexcompare);
+					if (TextLine[z][0] == letterArr.indexOf(Indexcompare)) {
+						lessThenZero.push(Indexcompare);
+						txtlessThenZero.push('lessThenZero_' + Indexcompare)
+					}
 				}
 			}
 		}
@@ -168,7 +196,17 @@ function CreateTextLine() {
 	limparArray6 = multiplicar.filter((este, i) => multiplicar.indexOf(este) === i);
 	limparArray7 = toZero.filter((este, i) => toZero.indexOf(este) === i);
 	limparArray8 = greaterThenZero.filter((este, i) => greaterThenZero.indexOf(este) === i);
-	limparArray9 = lessAndEqualToZero.filter((este, i) => lessAndEqualToZero.indexOf(este) === i);
+	limparArray9 = lessThenZero.filter((este, i) => lessThenZero.indexOf(este) === i);
+
+	ArrayArmazenar = txtArmazenar.filter((este, i) => txtArmazenar.indexOf(este) === i);
+	ArraytoZero = txttoZero.filter((este, i) => txttoZero.indexOf(este) === i);
+	Arraymultiplicar = txtmultiplicar.filter((este, i) => txtmultiplicar.indexOf(este) === i);
+	ArrayDividir = txtDividir.filter((este, i) => txtDividir.indexOf(este) === i);
+	ArrayRetornar = txtRetornar.filter((este, i) => txtRetornar.indexOf(este) === i);
+	ArraySomar = txtSomar.filter((este, i) => txtSomar.indexOf(este) === i);
+	ArraygreaterThenZero = txtgreaterThenZero.filter((este, i) => txtgreaterThenZero.indexOf(este) === i);
+	ArraySubtrair = txtSubtrair.filter((este, i) => txtSubtrair.indexOf(este) === i);
+	ArraylessThenZero = txtlessThenZero.filter((este, i) => txtlessThenZero.indexOf(este) === i);
 
 	var obj = new Object();
 	obj.Name = machineName;
@@ -181,19 +219,22 @@ function CreateTextLine() {
 	obj.multiplicar = limparArray6
 	obj.toZero = limparArray7
 	obj.greaterThenZero = limparArray8
-	obj.lessAndEqualToZero = limparArray9
+	obj.lessThenZero = limparArray9
 
 	var myJsonString = JSON.stringify(obj);
 	const Maquina = JSON.parse(myJsonString)
 
 
-	console.log(Maquina);
+	// console.log(Maquina);
 	gerarTexto(Maquina);
+	// mandar para a 3ª parte
+	sessionStorage.setItem('Machine', "")
+	sessionStorage.setItem('Machine', JSON.stringify(Maquina))
 }
 
 
 // gerar texto
-// 8 é o numero de opções da maquina(Armazenar, Retornar, Somar, Subtrair, Dividir, Multiplicar e =Zero)
+// 10 é o numero de opções da maquina(Armazenar, Retornar, Somar, Subtrair, Dividir, Multiplicar, =Zero, maior que 0, menor que 0)
 entryMachine = ['m', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'w', 'y', 'z', 'aa', 'ab']
 entraMachineStorage = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
 machineStorage = []
@@ -208,11 +249,14 @@ function gerarTexto(Maquina) {
 	linhas = []
 	for (const [key, value] of Object.entries(Maquina)) {
 		switch (key) {
-			// Nome
+			// Nome ok
 			case "Name":
-				linhas.push(`${value} = N^${Maquina.Registers}, N^${Maquina.Armazenar.length}, N^${Maquina.Retornar.length}`)
+				linhas.push(`Nome: ${value} = (N^${Maquina.Registers}, N^${Maquina.Armazenar.length}, N^${Maquina.Retornar.length}, ${ArrayArmazenar}, ${ArrayRetornar}, {${ArraySomar}, ${ArraySubtrair}, ${ArrayDividir}, ${Arraymultiplicar}},{${ArraytoZero}, ${ArraygreaterThenZero}, ${ArraylessThenZero}})`)
+				linhas.push(`N^${Maquina.Registers} - Conjuntos de Memória`)
+				linhas.push(`N^${Maquina.Armazenar.length} - Entradas`)
+				linhas.push(`N^${Maquina.Retornar.length} - Conjuntos de Saída`)
 				break;
-			// Armazenar
+			// Armazenar ok 
 			case "Armazenar":
 				for (let i = 0; i < Maquina.Armazenar.length; i++) {
 					linhas.push(`armazena_${Maquina.Armazenar[i]}: N^${Maquina.Registers} tal que, ∀neN, armazena_${Maquina.Armazenar[i]}(n) = (${padZeros(Maquina.Armazenar[i], Maquina.Registers)});`)
@@ -221,61 +265,62 @@ function gerarTexto(Maquina) {
 			// Retornar
 			case "Retornar":
 				for (let rt = 0; rt < Maquina.Retornar.length; rt++) {
-					linhas.push(`retorna_${Maquina.Retornar[rt]}: N^${Maquina.Registers} -> N tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, retorna_${Maquina.Retornar[rt]}(${padReturn(Maquina.Retornar[rt], Maquina.Registers)}) = ${Maquina.Retornar[rt]};`)
+					linhas.push(`retorna_${Maquina.Retornar[rt]}: N^${Maquina.Registers} -> N tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, retorna_${Maquina.Retornar[rt]}(${machineEntryList}) = ${padReturn(Maquina.Retornar[rt], machineEntryList.length)};`)
 				}
 				break;
 			// Subtrair
 			case "Subtrair":
 				for (let sub = 0; sub < Maquina.Subtrair.length; sub++) {
-					linhas.push(`subtrai_${Maquina.Subtrair[sub]}: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, subtrai_${Maquina.Subtrair[sub]}(${machineEntryList}) = (${padSubtoZero(Maquina.Subtrair[sub], Maquina.length)}), se n≥0; subtrai_${Maquina.Subtrair[sub]}(${machineEntryList}) = (${padSubEqualZero(Maquina.Subtrair[sub], Maquina.length)}), se n = 0`)
+					linhas.push(`subtrai_${Maquina.Subtrair[sub]}: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, subtrai_${Maquina.Subtrair[sub]}(${machineEntryList}) = (${padSubtoZero(Maquina.Subtrair[sub], machineEntryList.length)}), se ${padSubtoZeroFinal(Maquina.Subtrair[sub], machineEntryList.length)}≥0; subtrai_${Maquina.Subtrair[sub]}(${machineEntryList}) = (${machineEntryList}), se ${padSubtoZeroFinal(Maquina.Subtrair[sub], machineEntryList.length)} = 0`)
 				}
 				break;
 			// Somar
 			case "Somar":
 				for (let sum = 0; sum < Maquina.Somar.length; sum++) {
-					linhas.push(`adiciona_${Maquina.Somar[sum]}: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, adiciona_${Maquina.Somar[sum]}(${machineEntryList}) = (${padSum(Maquina.Somar[sum], Maquina.length)});`)
+					// console.log(Maquina.length)
+					linhas.push(`adiciona_${Maquina.Somar[sum]}: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, adiciona_${Maquina.Somar[sum]}(${machineEntryList}) = (${padSum(Maquina.Somar[sum], machineEntryList.length)});`)
 				}
 				break;
 			// ifZero
 			case "toZero":
-				for (let zer = 0; zer < Maquina.toZero.length; zer++) {
-					linhas.push(`${Maquina.toZero[zer]}_zero -> {verdadeiro, falso} tal que, ∀(${machineEntryList}),∈N^${Maquina.Registers}, ${Maquina.toZero[zer]}_zero(${machineEntryList}) = verdadeiro, se n = 0; ${Maquina.toZero[zer]}_zero(${machineEntryList}) = falso, se n ≠ 0`)
+				for (let d = 0; d < Maquina.toZero.length; d++) {
+					linhas.push(`${Maquina.toZero[d]}_zero -> {verdadeiro, falso} tal que, ∀(${machineEntryList}),∈N^${Maquina.Registers}, ${Maquina.toZero[d]}_zero(${machineEntryList}) = verdadeiro, se ${equalZero(Maquina.toZero[d], machineEntryList.length)} = 0; ${Maquina.toZero[d]}_zero(${machineEntryList}) = falso, se ${equalZero(Maquina.toZero[d], machineEntryList.length)} ≠ 0`)
 				}
 				break;
 			// dividir
 			case "Dividir":
-				for (let d = 0; d < Maquina.toZero.length; d++) {
-					linhas.push(`dividir_${Maquina.Dividir[d]}: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, dividir_${Maquina.Dividir[d]}(${machineEntryList}) = (${padDividir(Maquina.Dividir[d], Maquina.length)});`)
+				for (let d = 0; d < Maquina.Dividir.length; d++) {
+					linhas.push(`dividir_${Maquina.Dividir[d]}/2: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, dividir_${Maquina.Dividir[d]}(${machineEntryList}) = (${padDividir(Maquina.Dividir[d], machineEntryList.length)});`)
 				}
 				break;
 			// multiplicar
 			case "multiplicar":
 				for (let d = 0; d < Maquina.toZero.length; d++) {
-					linhas.push(`multiplicar_${Maquina.multiplicar[d]}: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, multiplicar_${Maquina.multiplicar[d]}(${machineEntryList}) = (${padMultiplicar(Maquina.multiplicar[d], Maquina.length)});`)
+					linhas.push(`multiplicar_${Maquina.multiplicar[d]}*2: N^${Maquina.Registers} -> N^${Maquina.Registers} tal que, ∀(${machineEntryList})∈N^${Maquina.Registers}, multiplicar_${Maquina.multiplicar[d]}(${machineEntryList}) = (${padMultiplicar(Maquina.multiplicar[d], machineEntryList.length)});`)
 				}
 				break;
 			// maior que zero
 			case "greaterThenZero":
-				for (let d = 0; d < Maquina.toZero.length; d++) {
-					// 
+				for (let d = 0; d < Maquina.greaterThenZero.length; d++) {
+					linhas.push(`${Maquina.greaterThenZero[d]}_greaterThanZero -> {verdadeiro, falso} tal que, ∀(${machineEntryList}),∈N^${Maquina.Registers}, ${Maquina.greaterThenZero[d]}_greaterThanZero(${machineEntryList}) = verdadeiro, se ${padgreaterThenZero(Maquina.greaterThenZero[d], machineEntryList.length)} > 0; ${Maquina.greaterThenZero[d]}_greaterThanZero(${machineEntryList}) = falso, se ${padgreaterThenZero(Maquina.greaterThenZero[d], machineEntryList.length)} ≤ 0`)
 				}
 				break;
-			// menor igual a zero	
-			case "lessAndEqualToZero":
-				for (let d = 0; d < Maquina.toZero.length; d++) {
-					// 
+			// menor que zero
+			case "lessThenZero":
+				for (let d = 0; d < Maquina.lessThenZero.length; d++) {
+					linhas.push(`${Maquina.lessThenZero[d]}_lessThanZero -> {verdadeiro, falso} tal que, ∀(${machineEntryList}),∈N^${Maquina.Registers}, ${Maquina.lessThenZero[d]}_lessThanZero(${machineEntryList}) = verdadeiro, se ${padlessThanZero(Maquina.lessThenZero[d], machineEntryList.length)} < 0; ${Maquina.lessThenZero[d]}_lessThanZero(${machineEntryList}) = falso, se ${padlessThanZero(Maquina.lessThenZero[d], machineEntryList.length)} ≥ 0`)
 				}
 				break;
 			default:
 				break;
 		}
 	};
-	console.log(linhas.reduce((a, b) => {
-		a += b;
-		a += '\n';
-		return a;
-	}, ''))
-	document.getElementById("textogerado").innerHTML = 'textGerado';
+	for (let i = 0; i < linhas.length; i++) {
+		var x = document.createElement("div");
+		var t = document.createTextNode(linhas[i]);
+		x.appendChild(t);
+		document.getElementById('textogerado').appendChild(x);
+	}
 };
 
 /**
@@ -301,14 +346,15 @@ function padZeros(i, length) {
  * @param {string} rt
  * @param {number} length
  * @returns
+ * letterArr
  */
 function padReturn(rt, length) {
-	let templateListString = machineEntryList.toString();
-	let asciiDistanceToA = rt.charCodeAt(0) - 97
-	const output = templateListString.substring(0, asciiDistanceToA * 2) +
-		rt +
-		templateListString.substring(asciiDistanceToA * 2 + 1)
-	return output
+	for (i = 0; i < length; i++) {
+		if (letterArr[i] == rt) {
+			const output = machineEntryList[i]
+			return output
+		}
+	}
 }
 
 /**
@@ -318,12 +364,17 @@ function padReturn(rt, length) {
  * @returns
  */
 function padSum(sum, length) {
-	let templateListString = machineEntryList.toString();
-	let asciiDistanceToA = sum.charCodeAt(0) - 97
-	const output = templateListString.substring(0, asciiDistanceToA * 2) +
-		sum + '+1' +
-		templateListString.substring(asciiDistanceToA * 2 + 1)
-	return output
+	for (i = 0; i < length; i++) {
+		if (letterArr[i] == sum) {
+			const savememory = machineEntryList[i]
+			let templateListString = machineEntryList.toString();
+			let asciiDistanceToA = sum.charCodeAt(0) - 97
+			const output = templateListString.substring(0, asciiDistanceToA * 2) +
+				savememory + '+1' +
+				templateListString.substring(asciiDistanceToA * 2 + 1)
+			return output
+		}
+	}
 }
 
 /**
@@ -333,27 +384,37 @@ function padSum(sum, length) {
  * @returns
  */
 function padDividir(d, length) {
-	let templateListString = machineEntryList.toString();
-	let asciiDistanceToA = d.charCodeAt(0) - 97
-	const output = templateListString.substring(0, asciiDistanceToA * 2) +
-		d + '/value' +
-		templateListString.substring(asciiDistanceToA * 2 + 1)
-	return output
+	for (i = 0; i < length; i++) {
+		if (letterArr[i] == d) {
+			const savememory = machineEntryList[i]
+			let templateListString = machineEntryList.toString();
+			let asciiDistanceToA = d.charCodeAt(0) - 97
+			const output = templateListString.substring(0, asciiDistanceToA * 2) +
+				savememory + '/2' +
+				templateListString.substring(asciiDistanceToA * 2 + 1)
+			return output
+		}
+	}
 }
 
 /**
- * Dividir
+ * Multiplicar
  * @param {string} d
  * @param {number} length
  * @returns
  */
 function padMultiplicar(d, length) {
-	let templateListString = machineEntryList.toString();
-	let asciiDistanceToA = d.charCodeAt(0) - 97
-	const output = templateListString.substring(0, asciiDistanceToA * 2) +
-		d + '*value' +
-		templateListString.substring(asciiDistanceToA * 2 + 1)
-	return output
+	for (i = 0; i < length; i++) {
+		if (letterArr[i] == d) {
+			const savememory = machineEntryList[i]
+			let templateListString = machineEntryList.toString();
+			let asciiDistanceToA = d.charCodeAt(0) - 97
+			const output = templateListString.substring(0, asciiDistanceToA * 2) +
+				savememory + '*2' +
+				templateListString.substring(asciiDistanceToA * 2 + 1)
+			return output
+		}
+	}
 }
 
 /**
@@ -363,12 +424,17 @@ function padMultiplicar(d, length) {
  * @returns
  */
 function padSubtoZero(sub, length) {
-	let templateListString = machineEntryList.toString();
-	let asciiDistanceToA = sub.charCodeAt(0) - 97
-	const output = templateListString.substring(0, asciiDistanceToA * 2) +
-		sub + '-1' +
-		templateListString.substring(asciiDistanceToA * 2 + 1)
-	return output
+	for (i = 0; i < length; i++) {
+		if (letterArr[i] == sub) {
+			const savememory = machineEntryList[i]
+			let templateListString = machineEntryList.toString();
+			let asciiDistanceToA = sub.charCodeAt(0) - 97
+			const output = templateListString.substring(0, asciiDistanceToA * 2) +
+				savememory + '-1' +
+				templateListString.substring(asciiDistanceToA * 2 + 1)
+			return output
+		}
+	}
 }
 
 /**
@@ -384,4 +450,65 @@ function padSubEqualZero(sub, length) {
 		'0' +
 		templateListString.substring(asciiDistanceToA * 2 + 1)
 	return output
+}
+
+/**
+ * subtrair final
+ * @param {string} sub
+ * @param {number} length
+ * @returns
+ */
+function padSubtoZeroFinal(sub, length) {
+	for (i = 0; i < length; i++) {
+		if (letterArr[i] == sub) {
+			const output = machineEntryList[i]
+			return output
+		}
+	}
+}
+
+/**
+ * =zero
+ * @param {string} d
+ * @param {number} length
+ * @returns
+ */
+function equalZero(d, length) {
+	for (i = 0; i < length; i++) {
+		if (letterArr[i] == d) {
+			const output = machineEntryList[i]
+			return output
+		}
+	}
+}
+
+
+/**
+ * menor que zero
+ * @param {string} d
+ * @param {number} length
+ * @returns
+ */
+function padgreaterThenZero(d, length) {
+	for (i = 0; i < length; i++) {
+		if (letterArr[i] == d) {
+			const output = machineEntryList[i]
+			return output
+		}
+	}
+}
+
+/**
+ * Maior que zero
+ * @param {string} d
+ * @param {number} length
+ * @returns
+ */
+function padlessThanZero(d, length) {
+	for (i = 0; i < length; i++) {
+		if (letterArr[i] == d) {
+			const output = machineEntryList[i]
+			return output
+		}
+	}
 }
