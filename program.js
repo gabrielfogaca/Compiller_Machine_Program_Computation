@@ -16,7 +16,8 @@ let mocadao = {
     ],
     "Somar": [
         "b",
-        "f"
+        "f",
+		"a"
     ],
     "Subtrair": [
         "a",
@@ -370,10 +371,10 @@ function buildProgramJSON (data) {
 					const formatedLine = "se " + dataLine[1] + " vá_para " + dataLine[2] + " senão vá_para " + dataLine[3]
 					programFormated.program.push(formatedLine)
 				} else if (teste.includes("multiplicar")) {
-					const formatedLine = "faca " + dataLine[1] + " por " +  dataLine[2] + " vá_para" + dataLine[3]
+					const formatedLine = "faca " + dataLine[1] + " por " +  dataLine[2] + " vá_para " + dataLine[3]
 					programFormated.program.push(formatedLine)
 				} else if (teste.includes("dividir")) {
-					const formatedLine = "faca " + dataLine[1] + " por " +  dataLine[2] + " vá_para" + dataLine[3]
+					const formatedLine = "faca " + dataLine[1] + " por " +  dataLine[2] + " vá_para " + dataLine[3]
 					programFormated.program.push(formatedLine)
 				}
 			}

@@ -14,7 +14,8 @@ var mocadoReg = {
     "Armazenar": [
         "a",
         "c",
-        "d"
+        "d",
+		"b"
     ],
     "Retornar": [
         "b",
@@ -138,14 +139,22 @@ function readLine (line) {
 			if (isntHalted) {
 				vaPara(lineString)
 			}
+		} else if (lineString.includes(">")) {
+			isntHalted = greaterThenZero(lineString, line)
+			// if it hasnt halted yet, continues to read the string
+			if (isntHalted) {
+				vaPara(lineString)
+			}
 		}
 	} else if(lineString.includes("faca")) {
 		if (lineString.includes("sums")){
 			currentLine = summation(lineString, line);
 		} else if (lineString.includes("subs")){
 			currentLine = subtraction(lineString, line);
-		} else if (lineString.includes) {
-
+		} else if (lineString.includes("dividir")) {
+			currentLine = division(lineString, line)
+		} else if (lineString.includes("multiplicar")) {
+			currentLine = multiply(lineString, line)
 		}
 	}
 
@@ -179,7 +188,14 @@ function lessThenZeroComparisson (lineString, line) {
 	let register = lineString.charAt(3)
 	let splitLine = lineString.split("vá_para ")
 
-	if(parseInt(inputValues[register]) < 0) {
+	let registerValue
+	if (inputValues[register].includes(".")) {
+		registerValue = parseFloat(inputValues[register])
+	} else {
+		registerValue = parseInt(inputValues[register])
+	}
+
+	if(registerValue < 0) {
 		let wentTo = splitLine[1].charAt(0)
 		line++
         let logging = document.createElement("span")
@@ -199,6 +215,37 @@ function lessThenZeroComparisson (lineString, line) {
     }  
 }
 
+function greaterThenZero (lineString, line) {
+	let register = lineString.charAt(3)
+	let splitLine = lineString.split("vá_para ")
+
+
+	let registerValue
+	if (inputValues[register].includes(".")) {
+		registerValue = parseFloat(inputValues[register])
+	} else {
+		registerValue = parseInt(inputValues[register])
+	}
+	if(registerValue > 0) {
+		let wentTo = splitLine[1].charAt(0)
+		line++
+        let logging = document.createElement("span")
+			logging.innerText = "em " + line.toString() + ", como " + register + "> 0, desviou para " + wentTo
+		log.appendChild(logging)
+		log.appendChild(lb)
+		
+		return false
+    } else {
+		let wentTo = splitLine[2]
+		line++
+        let logging = document.createElement("span")
+			logging.innerText = "em " + line.toString() + ", como " + register + "< 0, desviou para " + wentTo
+		log.appendChild(logging)
+		log.appendChild(lb)
+        return true
+    }  
+}
+
 // func to get where to go from the 'se' condition is false
 function vaPara(lineString) {
 	// changes next line
@@ -211,7 +258,12 @@ function vaPara(lineString) {
 function summation(lineString, line) {
 	line++
 	const register = lineString.charAt(9)
-	let registerValue = parseInt(inputValues[register])
+	let registerValue
+	if (inputValues[register].includes(".")) {
+		registerValue = parseFloat(inputValues[register])
+	} else {
+		registerValue = parseInt(inputValues[register])
+	}
 
 	registerValue++
 	inputValues[register] = registerValue.toString()
@@ -222,7 +274,7 @@ function summation(lineString, line) {
 	
 
 	let logging = document.createElement("span")
-			logging.innerText = "em " + line.toString() + ", adicionou no registrador " + register + "e desviou para " + nextLine
+			logging.innerText = "em " + line.toString() + ", adicionou no registrador " + register + " e desviou para " + nextLine
 		log.appendChild(logging)
 		log.appendChild(lb)
 	
@@ -233,7 +285,12 @@ function summation(lineString, line) {
 function subtraction(lineString, line) {
 	line++
 	const register = lineString.charAt(9)
-	let registerValue = parseInt(inputValues[register])
+	let registerValue
+	if (inputValues[register].includes(".")) {
+		registerValue = parseFloat(inputValues[register])
+	} else {
+		registerValue = parseInt(inputValues[register])
+	}
 
 	registerValue--
 	inputValues[register] = registerValue.toString()
@@ -244,7 +301,51 @@ function subtraction(lineString, line) {
 	
 
 	let logging = document.createElement("span")
-			logging.innerText = "em " + line.toString() + ", subtraiu do registrador " + register + "e desviou para " + nextLine
+			logging.innerText = "em " + line.toString() + ", subtraiu do registrador " + register + " e desviou para " + nextLine
+		log.appendChild(logging)
+		log.appendChild(lb)
+
+	nextLine--
+	return nextLine
+}
+
+function division(lineString, line) {
+	line++
+	const register = lineString.charAt(13)
+	let registerValue = parseFloat(inputValues[register])
+	
+	splitDividend = lineString.split("por ")
+	let splitNextLine =	splitDividend[1].split(" vá_para ")
+	
+	const dividend = parseInt(splitNextLine[0])
+	let nextLine = parseInt(splitNextLine[1])
+	
+	inputValues[register] = (registerValue / dividend).toString()
+	console.log(inputValues);
+	let logging = document.createElement("span")
+			logging.innerText = "em " + line.toString() + ", dividiu por " + dividend + " o registrador  " + register + " e desviou para " + nextLine
+		log.appendChild(logging)
+		log.appendChild(lb)
+
+	nextLine--
+	return nextLine
+}
+
+function multiply(lineString, line) {
+	line++
+	const register = lineString.charAt(13)
+	let registerValue = parseFloat(inputValues[register])
+	
+	splitMultiplier = lineString.split("por ")
+	let splitNextLine =	splitMultiplier[1].split(" vá_para ")
+	
+	const multiplier = parseInt(splitNextLine[0])
+	let nextLine = parseInt(splitNextLine[1])
+	
+	inputValues[register] = (registerValue / multiplier).toString()
+	console.log(inputValues);
+	let logging = document.createElement("span")
+			logging.innerText = "em " + line.toString() + ", multiplicou por " + multiplier + " o registrador  " + register + " e desviou para " + nextLine
 		log.appendChild(logging)
 		log.appendChild(lb)
 
