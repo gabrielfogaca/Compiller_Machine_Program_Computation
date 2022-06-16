@@ -1,51 +1,6 @@
 let currentLine = 1
-console.log(JSON.parse(sessionStorage.getItem('program')))
-let mocadao = {
-	"Name": "ASD",
-    "Registers": "7",
-    "Armazenar": [
-        "a",
-        "c",
-        "d"
-    ],
-    "Retornar": [
-        "b",
-        "e",
-        "f",
-        "g"
-    ],
-    "Somar": [
-        "b",
-        "f",
-		"a"
-    ],
-    "Subtrair": [
-        "a",
-        "b",
-        "g"
-    ],
-    "Dividir": [
-        "a",
-        "c",
-        "d"
-    ],
-    "multiplicar": [
-        "a",
-        "b"
-    ],
-    "toZero": [
-        "a",
-        "b"
-    ],
-    "greaterThenZero": [
-        "a",
-        "c"
-    ],
-    "lessThenZero": [
-        "b",
-        "e"
-    ]
-}
+console.log(JSON.parse(sessionStorage.getItem('Machine')))
+let mocadao = JSON.parse(sessionStorage.getItem('Machine'))
 
 function createLine() {
 	let programNode = document.getElementById("input-form")

@@ -8,52 +8,7 @@
 // 	]
 // }
 
-var mocadoReg = {
-    "Name": "asd",
-    "Registers": "7",
-    "Armazenar": [
-        "a",
-        "c",
-        "d",
-		"b"
-    ],
-    "Retornar": [
-        "b",
-        "e",
-        "f",
-        "g"
-    ],
-    "Somar": [
-        "b",
-        "f"
-    ],
-    "Subtrair": [
-        "a",
-        "b",
-        "g"
-    ],
-    "Dividir": [
-        "a",
-        "c",
-        "d"
-    ],
-    "multiplicar": [
-        "a",
-        "b"
-    ],
-    "toZero": [
-        "a",
-        "b"
-    ],
-    "greaterThenZero": [
-        "a",
-        "c"
-    ],
-    "lessThenZero": [
-        "b",
-        "e"
-    ]
-}
+var mocadoReg = {}
 
 var inputValues = {}
 
@@ -78,6 +33,7 @@ let registerInfo = {}
 if (sessionStorage.getItem('program').length !== 0 ) {
 	let varsDiv = document.getElementById("vars").firstElementChild.firstElementChild
 	programCode = JSON.parse(sessionStorage.getItem('program'))
+	mocadoReg = JSON.parse(sessionStorage.getItem('Machine'))
 	console.log(programCode)
 
 	mocadoReg.Armazenar.forEach(regs => {
