@@ -64,17 +64,20 @@ function handleInputs(event) {
 
 
 function compute () {
-	// currentLine !== 0 && currentLine !== programCode.program.length
+	let inputValuesString = ""
+	for (let index of Object.keys(inputValues)){
+		inputValuesString += inputValues[index]
+		inputValuesString += ", "
+	}
+
+	let initialInstructuions = document.createElement("span")
+		initialInstructuions.innerText ="(" + "1"+ "(" + inputValuesString.slice(inputValuesString,length - 2)+ "))        " + "instrução inicial e valor de entrada armazenado"
+	log.appendChild(initialInstructuions)
+
 	while (isntHalted && plzStop < 400) {
 		readLine(currentLine)
 		plzStop++
 	}
-	
-	// let firstLine = programCode.program[0]
-
-	// if (firstLine.includes("se")) {
-	//     checkSe(firstLine)
-	// }
 }
 
 function readLine (line) {
@@ -121,10 +124,16 @@ function zeroComparisson (lineString, line) {
 	let splitLine = lineString.split("vá_para ")
 
     if(parseInt(inputValues[register]) === 0) {
+		let inputValuesString = ""
+		for (let index of Object.keys(inputValues)){
+			inputValuesString += inputValues[index]
+			inputValuesString += ", "
+		}
+
 		let wentTo = splitLine[1].charAt(0)
 		line++
         let logging = document.createElement("span")
-			logging.innerText = "em " + line.toString() + ", como " + register + "=0, desviou para " + wentTo
+			logging.innerText = "(" + wentTo + "(" + inputValuesString.slice(inputValuesString,length - 2)+ "))        " + "em " + line.toString() + ", como " + register + "=0, desviou para " + wentTo
 		log.appendChild(logging)
 		log.appendChild(lb)
 		
@@ -132,8 +141,13 @@ function zeroComparisson (lineString, line) {
     } else {
 		let wentTo = splitLine[2]
 		line++
+		let inputValuesString = ""
+		for (let index of Object.keys(inputValues)){
+			inputValuesString += inputValues[index]
+			inputValuesString += ", "
+		}
         let logging = document.createElement("span")
-			logging.innerText = "em " + line.toString() + ", como " + register + "!=0, desviou para " + wentTo
+			logging.innerText = "(" + wentTo + "(" + inputValuesString.slice(inputValuesString,length - 2)+ "))        " + "em " + line.toString() + ", como " + register + "!=0, desviou para " + wentTo
 		log.appendChild(logging)
 		log.appendChild(lb)
         return true
@@ -154,8 +168,14 @@ function lessThenZeroComparisson (lineString, line) {
 	if(registerValue < 0) {
 		let wentTo = splitLine[1].charAt(0)
 		line++
+
+		let inputValuesString = ""
+		for (let index of Object.keys(inputValues)){
+			inputValuesString += inputValues[index]
+			inputValuesString += ", "
+		}
         let logging = document.createElement("span")
-			logging.innerText = "em " + line.toString() + ", como " + register + "< 0, desviou para " + wentTo
+			logging.innerText = "(" + wentTo + "(" + inputValuesString.slice(inputValuesString,length - 2)+ "))        " + "em " + line.toString() + ", como " + register + "< 0, desviou para " + wentTo
 		log.appendChild(logging)
 		log.appendChild(lb)
 		
@@ -163,8 +183,14 @@ function lessThenZeroComparisson (lineString, line) {
     } else {
 		let wentTo = splitLine[2]
 		line++
+
+		let inputValuesString = ""
+		for (let index of Object.keys(inputValues)){
+			inputValuesString += inputValues[index]
+			inputValuesString += ", "
+		}
         let logging = document.createElement("span")
-			logging.innerText = "em " + line.toString() + ", como " + register + "> 0, desviou para " + wentTo
+			logging.innerText = "(" + wentTo + "(" + inputValuesString.slice(inputValuesString,length - 2)+ "))        " + "em " + line.toString() + ", como " + register + "> 0, desviou para " + wentTo
 		log.appendChild(logging)
 		log.appendChild(lb)
         return true
@@ -185,8 +211,14 @@ function greaterThenZero (lineString, line) {
 	if(registerValue > 0) {
 		let wentTo = splitLine[1].charAt(0)
 		line++
+
+		let inputValuesString = ""
+		for (let index of Object.keys(inputValues)){
+			inputValuesString += inputValues[index]
+			inputValuesString += ", "
+		}
         let logging = document.createElement("span")
-			logging.innerText = "em " + line.toString() + ", como " + register + "> 0, desviou para " + wentTo
+			logging.innerText = "(" + wentTo + "(" + inputValuesString.slice(inputValuesString,length - 2)+ "))        " + "em " + line.toString() + ", como " + register + "> 0, desviou para " + wentTo
 		log.appendChild(logging)
 		log.appendChild(lb)
 		
@@ -194,8 +226,14 @@ function greaterThenZero (lineString, line) {
     } else {
 		let wentTo = splitLine[2]
 		line++
+
+		let inputValuesString = ""
+		for (let index of Object.keys(inputValues)){
+			inputValuesString += inputValues[index]
+			inputValuesString += ", "
+		}
         let logging = document.createElement("span")
-			logging.innerText = "em " + line.toString() + ", como " + register + "< 0, desviou para " + wentTo
+			logging.innerText = "(" + wentTo + "(" + inputValuesString.slice(inputValuesString,length - 2)+ "))        " + "em " + line.toString() + ", como " + register + "< 0, desviou para " + wentTo
 		log.appendChild(logging)
 		log.appendChild(lb)
         return true
@@ -229,8 +267,13 @@ function summation(lineString, line) {
 	let nextLine = parseInt(splitNextLine[1])
 	
 
+	let inputValuesString = ""
+	for (let index of Object.keys(inputValues)){
+		inputValuesString += inputValues[index]
+		inputValuesString += ", "
+	}
 	let logging = document.createElement("span")
-			logging.innerText = "em " + line.toString() + ", adicionou no registrador " + register + " e desviou para " + nextLine
+			logging.innerText = "(" + nextLine + "(" + inputValuesString.slice(inputValuesString,length - 2)+ "))        " + "em " + line.toString() + ", adicionou no registrador " + register + " e desviou para " + nextLine
 		log.appendChild(logging)
 		log.appendChild(lb)
 	
@@ -255,9 +298,13 @@ function subtraction(lineString, line) {
 	let splitNextLine =	lineString.split("vá_para ")
 	let nextLine = parseInt(splitNextLine[1])
 	
-
+	let inputValuesString = ""
+	for (let index of Object.keys(inputValues)){
+		inputValuesString += inputValues[index]
+		inputValuesString += ", "
+	}
 	let logging = document.createElement("span")
-			logging.innerText = "em " + line.toString() + ", subtraiu do registrador " + register + " e desviou para " + nextLine
+			logging.innerText = "(" + nextLine + "(" + inputValuesString.slice(inputValuesString,length - 2)+ "))        " + "em " + line.toString() + ", subtraiu do registrador " + register + " e desviou para " + nextLine
 		log.appendChild(logging)
 		log.appendChild(lb)
 
@@ -277,9 +324,14 @@ function division(lineString, line) {
 	let nextLine = parseInt(splitNextLine[1])
 	
 	inputValues[register] = (registerValue / dividend).toString()
-	console.log(inputValues);
+
+	let inputValuesString = ""
+	for (let index of Object.keys(inputValues)){
+		inputValuesString += inputValues[index]
+		inputValuesString += ", "
+	}
 	let logging = document.createElement("span")
-			logging.innerText = "em " + line.toString() + ", dividiu por " + dividend + " o registrador  " + register + " e desviou para " + nextLine
+			logging.innerText = "(" + nextLine + "(" + inputValuesString.slice(inputValuesString,length - 2)+ "))        " + "em " + line.toString() + ", dividiu por " + dividend + " o registrador  " + register + " e desviou para " + nextLine
 		log.appendChild(logging)
 		log.appendChild(lb)
 
@@ -299,9 +351,14 @@ function multiply(lineString, line) {
 	let nextLine = parseInt(splitNextLine[1])
 	
 	inputValues[register] = (registerValue / multiplier).toString()
-	console.log(inputValues);
+
+	let inputValuesString = ""
+	for (let index of Object.keys(inputValues)){
+		inputValuesString += inputValues[index]
+		inputValuesString += ", "
+	}
 	let logging = document.createElement("span")
-			logging.innerText = "em " + line.toString() + ", multiplicou por " + multiplier + " o registrador  " + register + " e desviou para " + nextLine
+			logging.innerText = "(" + nextLine + "(" + inputValuesString.slice(inputValuesString,length - 2)+ "))        " + "em " + line.toString() + ", multiplicou por " + multiplier + " o registrador  " + register + " e desviou para " + nextLine
 		log.appendChild(logging)
 		log.appendChild(lb)
 
