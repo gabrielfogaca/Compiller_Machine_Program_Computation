@@ -51,7 +51,7 @@ function buildInput(dom) {
 	if (dom.Window) return;
 	
 	let elParent = document.getElementById(dom.id).parentNode
-
+	// if to check html DOM to build and populate input fields
 	if (dom.value === "faca") {
 		let getLineNumber = elParent.id.split("line,")
 		let lineNumber = parseInt(getLineNumber[1])
@@ -100,20 +100,9 @@ function buildInput(dom) {
 				doInput.text = "dividir " + mocadao.Dividir[index]
 			condition.appendChild(doInput)
 		}
-
-
-		
-		// let multiply = document.createElement("option")
-		// 		multiply.id = "multiply"
-		// 		multiply.text = "Multiplicar"
-		// condition.appendChild(multiply)
-		
-		// let subtract = document.createElement("option")
-		// 		subtract.id = "subtract"
-		// 		subtract.text = "Dividir"
-		// condition.appendChild(subtract)
 	}
 
+	// if to check html DOM to build and populate input fields
 	if (dom.value === "se") {
 		let getLineNumber = elParent.id.split("line,")
 		let lineNumber = getLineNumber[1]
@@ -180,9 +169,8 @@ function buildInput(dom) {
 		thisDiv.appendChild(goToInput2)
 
 	}
-	// //console.log(elParent);
 }
-
+//func to dynamically build input fields
 function logicOperations(params) {
 	let thisDiv = document.getElementById("generatedInputs," + globalLine)
 	console.log(globalLine)
@@ -255,6 +243,8 @@ function logicOperations(params) {
 		thisDiv.appendChild(goToInput)
 	}
 }
+
+// gets the inputs from user and build a JSON object
 function generateProgram(event) {
     event.preventDefault();
     console.log(event)
@@ -305,6 +295,8 @@ function generateProgram(event) {
     displayProgramScreen(builtedProgram)
 }
 
+
+// function that will check each string line from the inputs gathered before, and create the program object to be sent to the computing phase
 function buildProgramJSON (data) {
 	// for(index = 0; index < currentLine - 1; index++) {
 	//     console.log(data.eval("script" + index.toString()))
@@ -316,8 +308,8 @@ function buildProgramJSON (data) {
 	for (var key in data) {
 		if (data.hasOwnProperty(key)) {
 			dataLine = data[key]
-			const teste = dataLine[1]
-			console.log(teste);
+			const line = dataLine[1]
+			console.log(line);
 			if (dataLine.length > 0) {
 				if (dataLine[0] === "faca" && !dataLine[1].includes("multiplicar") && !dataLine[1].includes("dividir")){
 				const formatedLine = "faca " + dataLine[1] + " vá_para " + dataLine[2]
@@ -325,10 +317,10 @@ function buildProgramJSON (data) {
 				} else if (dataLine[0] === "se") {
 					const formatedLine = "se " + dataLine[1] + " vá_para " + dataLine[2] + " senão vá_para " + dataLine[3]
 					programFormated.program.push(formatedLine)
-				} else if (teste.includes("multiplicar")) {
+				} else if (line.includes("multiplicar")) {
 					const formatedLine = "faca " + dataLine[1] + " por " +  dataLine[2] + " vá_para " + dataLine[3]
 					programFormated.program.push(formatedLine)
-				} else if (teste.includes("dividir")) {
+				} else if (line.includes("dividir")) {
 					const formatedLine = "faca " + dataLine[1] + " por " +  dataLine[2] + " vá_para " + dataLine[3]
 					programFormated.program.push(formatedLine)
 				}
@@ -342,6 +334,7 @@ function buildProgramJSON (data) {
 	return programFormated
 }
 
+// displays the program on screen
 function displayProgramScreen (data) {
 	let title = document.getElementById("generated-title")
 	let programContent = document.getElementById("program-content")

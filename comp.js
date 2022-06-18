@@ -53,16 +53,17 @@ if (sessionStorage.getItem('program').length !== 0 ) {
 	})
 }
 
+// get register input values
 function handleInputs(event) {
 	event.preventDefault();
 	const data = new FormData(event.target);
 	inputValues = Object.fromEntries(data);
 
-	console.log(inputValues);
+	// console.log(inputValues);
 	compute()
 }
 
-
+// main function that starts the cumputing
 function compute () {
 	let inputValuesString = ""
 	for (let index of Object.keys(inputValues)){
@@ -74,12 +75,14 @@ function compute () {
 		initialInstructuions.innerText ="(" + "1"+ "(" + inputValuesString.slice(inputValuesString,length - 2)+ "))        " + "instrução inicial e valor de entrada armazenado"
 	log.appendChild(initialInstructuions)
 
+	// while the machine isnt halted, it keeps looping reading lines till plzStop gets to its determinated value, or the webpage crashes
 	while (isntHalted && plzStop < 400) {
 		readLine(currentLine)
 		plzStop++
 	}
 }
 
+// function that will read given line to see its a logic comparer or operator
 function readLine (line) {
 	let lineString = programCode.program[line]
 	
@@ -119,6 +122,7 @@ function readLine (line) {
 
 }
 
+// functions of logic comparisson, all are basically the same
 function zeroComparisson (lineString, line) {
     let register = lineString.charAt(9)
 	let splitLine = lineString.split("vá_para ")
@@ -249,6 +253,7 @@ function vaPara(lineString) {
 	currentLine--
 }
 
+// logic operators, same with logic comparers, all are basically the same
 function summation(lineString, line) {
 	line++
 	const register = lineString.charAt(9)
