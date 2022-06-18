@@ -259,7 +259,7 @@ function gerarTexto(Maquina) {
 			// Armazenar ok 
 			case "Armazenar":
 				for (let i = 0; i < Maquina.Armazenar.length; i++) {
-					linhas.push(`armazena_${Maquina.Armazenar[i]}: N^${Maquina.Registers} tal que, ∀neN, armazena_${Maquina.Armazenar[i]}(n) = (${padZeros(Maquina.Armazenar[i], Maquina.Registers)});`)
+					linhas.push(`armazena_${Maquina.Armazenar[i]}: N^${Maquina.Registers} tal que, ∀n∈N, armazena_${Maquina.Armazenar[i]}(n) = (${padZeros(Maquina.Armazenar[i], Maquina.Registers)});`)
 				}
 				break;
 			// Retornar
